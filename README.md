@@ -11,7 +11,7 @@ git clone https://github.com/laitran11/WebApp.git
 Clone branch repository:
 
 ```
-git clone -webapp https://github.com/laitran11/WebApp.git
+git clone -webapi https://github.com/laitran11/WebApp.git
 ```
 
 ---
