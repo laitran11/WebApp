@@ -1,0 +1,19 @@
+﻿
+@model List<Product>
+@inject IConfiguration config
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <h2 class="title">@item.Name</h2>
+            <div>
+                <a href="/home/detail/@item.Id">
+                    <img class="img-thumbnail" alt="@item.Name" class="" src="@config.GetSection("Urls:Api").Value/images/small/@item.ImageUrl">
+                </a>
+            </div>
+            <p>@item.Price</p>
+        </div>
+    }
+</div>
+

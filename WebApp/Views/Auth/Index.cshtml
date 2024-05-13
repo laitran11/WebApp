@@ -1,0 +1,7 @@
+﻿@using System.Security.Claims;
+@{
+    Layout = null;
+}
+@User.Identity.Name
+
+@User.FindFirstValue(ClaimTypes.Authentication)

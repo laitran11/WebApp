@@ -1,0 +1,12 @@
+D:\C#1\WebApi\EStore\DAL\bin\Debug\net7.0\DAL.deps.json
+D:\C#1\WebApi\EStore\DAL\bin\Debug\net7.0\DAL.dll
+D:\C#1\WebApi\EStore\DAL\bin\Debug\net7.0\DAL.pdb
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.csproj.AssemblyReference.cache
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.AssemblyInfoInputs.cache
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.AssemblyInfo.cs
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.csproj.CoreCompileInputs.cache
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.dll
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\refint\DAL.dll
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\DAL.pdb
+D:\C#1\WebApi\EStore\DAL\obj\Debug\net7.0\ref\DAL.dll

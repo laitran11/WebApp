@@ -1,0 +1,47 @@
+﻿@model Product
+@inject IConfiguration config
+
+<h2 class="text-center py-3">ESTORE</h2>
+<div>
+    <div class="row">
+        <div class="col-4">
+            
+            @if(Model.ProductImages != null)
+            {
+                foreach (var item in Model.ProductImages)
+                {       
+                    <img src="@config.GetSection("Urls:Api").Value/images/small/@item.ImageUrl" alt="@Model.Name" />
+                }
+            } 
+        </div>
+        <div class="col-8">
+            @if (Model.ProductImages != null)
+            {
+                foreach (var item in Model.ProductImages)
+                {
+                    <img src="@config.GetSection("Urls:Api").Value/images/larger/@item.ImageUrl" alt="@Model.Name" />
+                }
+            }
+            <h2>@Model.Name</h2>
+            <p>@Model.Code</p>
+            <p>@Model.Color</p>
+            <p>@Model.Price</p>
+            <form method="post" action="/cart/add">
+                <div>
+                @foreach(var item in Model.ProductSizes)
+                {
+                    <label for="">@item.Size</label>
+                    <input id="@item.Size" type="radio" name="size" value="@item.Size" />
+                }
+                </div>
+                <input type="number" name="quantity" value="1" min="1" max="10" />
+                <input type="hidden" value="@Model.Id" name="productId" />
+                <button class="btn btn-primary">Add To Cart</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+
+
+

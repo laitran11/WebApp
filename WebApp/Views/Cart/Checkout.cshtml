@@ -1,0 +1,101 @@
+﻿@{
+    Layout = "_LayoutCart";
+}
+<div class="container">
+    <h2 class="text-center py-3">ESTORE</h2>
+    <h3 class="text-center">Personal Address</h3>
+    @if (ViewBag.addresses != null && ViewBag.addresses.Count > 0)
+    {
+           <form method="post">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>checked</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Ward</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (Address item in ViewBag.addresses)
+                    {
+                        <tr>
+                            <td>
+                                <input type="radio" name="addressId" value="@item.Id" @(item.IsDefault ?"checked" : "") />
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.Phone</td>
+                            <td>@item.WardId</td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+        <button> Accept Checkout</button>
+        </form>
+    }
+    else
+    {
+        <form method="post" action="/cart/address">
+            <input type="checkbox" name="isDefault" checked value="true" />
+            <div>
+                <label>Province</label>
+                <select id="pid" asp-items="ViewBag.provinces"></select>
+            </div>
+            <div>
+                <label>District</label>
+                <select id="did" ></select>
+            </div>
+            <div>
+                <label>Ward</label>
+                <select id="wid" name="wardId"></select>
+            </div>
+            <div>
+                <label>Name</label>
+                <input  name="name" type="text" />
+            </div>
+            <div>
+                <label>Phone</label>
+                <input  name="phone" type="number" />
+            </div>
+            <button>Save Changes</button>
+        </form>
+        <script>
+            function getDistricts(id){
+                $.post(`/province/districts/${id}` , (d) =>{
+                    $(did).empty();
+                    for(var i in d){
+                        $(did).append(`<option value="${d[i]['id']}">${d[i]['name']}</option>`)
+                    }
+                    getWards($(did).val());
+                });
+            }
+            function getWards(id){
+                $.post(`/province/wards/${id}` , (d) =>{
+                    $(wid).empty();
+                    for(var i in d){
+                        $(wid).append(`<option value="${d[i]['id']}">${d[i]['name']}</option>`)
+                    }
+                });
+            }
+            getDistricts($(pid).val());
+
+            $(pid).change(function(){
+                var id = $(this).val();
+                //console.log(id)
+            @*$.post(`/province/districts/${id}`, (d) =>{
+                $(did).empty();
+                for(var i in d){
+                    $(did).append(`<option value="${d[i]['id']}">${d[i]['name']}</option>`);
+                }
+            });*@
+                getDistricts(id);
+            });
+            $(did).change(function(){
+                var id = $(this).val();
+                //console.log(id);
+                getWards(id);
+            });
+        </script>
+    }
+</div>
+
